@@ -2,10 +2,18 @@ package com.sarreh.mvp.model;
 
 public class Car {
     private CarBrand brand;
-    private String year;
     private String numberPlate;
     private String acquireYear;
     private String productionYear;
+    private int id;
+
+    public Car(CarBrand brand, String numberPlate, String acquireYear, String productionYear, int id) {
+        this.brand = brand;
+        this.numberPlate = numberPlate;
+        this.acquireYear = acquireYear;
+        this.productionYear = productionYear;
+        this.id = id;
+    }
 
     public CarBrand getBrand() {
         return brand;
@@ -13,14 +21,6 @@ public class Car {
 
     public void setBrand(CarBrand brand) {
         this.brand = brand;
-    }
-
-    public String getYear() {
-        return year;
-    }
-
-    public void setYear(String year) {
-        this.year = year;
     }
 
     public String getNumberPlate() {
@@ -45,5 +45,13 @@ public class Car {
 
     public void setProductionYear(String productionYear) {
         this.productionYear = productionYear;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 }

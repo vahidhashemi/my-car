@@ -15,26 +15,30 @@ import java.util.List;
 
 import rx.Observable;
 
-public class DatabaseContract implements DBRepository {
+public class DatabaseRepoImpl implements DBRepository {
 
     Context context;
     SQLiteDatabase sqLiteDatabase;
 
-    public DatabaseContract(Context context, DatabaseHelper databaseHelper) {
+    public DatabaseRepoImpl(Context context, DatabaseHelper databaseHelper) {
         this.context = context;
         sqLiteDatabase = databaseHelper.getReadableDatabase();
     }
 
     private List<Car> getCarsFromDB() {
         List<Car> cars = new ArrayList<>();
-        Cursor cursor = sqLiteDatabase.rawQuery("SELECT * FROM car", null);
+        //TODO : add sql queries to another constant class
+        Cursor cursor = sqLiteDatabase.rawQuery("SELECT car.number_plate, \n" +
+                "\tcar.acquire_year, \n" +
+                "\tcar.production_year, \n" +
+                "\tbrand.brand_name, \n" +
+                "\tmodel.model_name\n" +
+                "FROM car INNER JOIN brand ON car.brand_id = brand.id\n" +
+                "\t INNER JOIN model ON brand.model_id = model.id", null);
         if (cursor.moveToFirst()) {
             do {
                 String carString = "";
-                Car car = new Car();
-                CarBrand carBrand = new CarBrand("brand", new CarModel("model"));
-                car.setBrand(carBrand);
-                cars.add(car);
+                
 
             } while (cursor.moveToNext());
         }
