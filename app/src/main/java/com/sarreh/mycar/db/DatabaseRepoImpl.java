@@ -5,8 +5,6 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 
 import com.sarreh.mvp.model.Car;
-import com.sarreh.mvp.model.CarBrand;
-import com.sarreh.mvp.model.CarModel;
 import com.sarreh.mvp.model.ResponseWrapper;
 import com.sarreh.repo.DBRepository;
 
@@ -38,7 +36,7 @@ public class DatabaseRepoImpl implements DBRepository {
         if (cursor.moveToFirst()) {
             do {
                 String carString = "";
-                
+
 
             } while (cursor.moveToNext());
         }
